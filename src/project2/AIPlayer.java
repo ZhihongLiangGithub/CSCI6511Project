@@ -109,25 +109,6 @@ public class AIPlayer {
             }
             return best;
         } else {
-            /*double best = Integer.MAX_VALUE;
-            boolean isMoveLeft = false;
-            for (int i = 0; i < board.length; i++) {
-                for (int j = 0; j < board[0].length; j++) {
-                    if (board[i][j] == 0) {
-                        isMoveLeft = true;
-                        board[i][j] = -player;
-                        double s = eva.evaluateBoard(board, score, -player, i, j);
-                        best = Math.min(best, minimax(board, s, depth + 1, alpha, beta, !isMax));
-                        board[i][j] = 0;
-                        beta = Math.min(beta, best);
-                        if (beta <= alpha) {
-                            break;
-                        }
-                    }
-                }
-            }
-            if (!isMoveLeft) return 0;
-            return best;*/
             List<PointScore> pointScoreList = getValuablePlaces(board, score, -player);
             int searchSpace = Math.min(MAX_SEARCH_SPACE, pointScoreList.size());
             if (searchSpace == 0) return 0;

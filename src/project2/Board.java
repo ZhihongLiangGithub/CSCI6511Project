@@ -4,37 +4,16 @@ public class Board {
 
     private int[][] board;
     private int numToWin;
-    private int[][] p1Space;
-    private int[][] p2Space;
 
     public Board(int size, int numToWin) {
         this.board = new int[size][size];
         this.numToWin = numToWin;
-        p1Space = new int[][]{{size, size}, {-1, -1}};
-        p2Space = new int[][]{{size, size}, {-1, -1}};
     }
 
     public int[][] getBoard() {
         return board.clone();
     }
 
-    public int[] getPlayerSpaceTopLeft(int player) {
-        if (player == 1) {
-            return p1Space[0].clone();
-        } else if (player == -1) {
-            return p2Space[0].clone();
-        }
-        return null;
-    }
-
-    public int[] getPlayerSpaceBottomRight(int player) {
-        if (player == 1) {
-            return p1Space[1].clone();
-        } else if (player == -1) {
-            return p2Space[1].clone();
-        }
-        return null;
-    }
 
     public int getNumToWin() {
         return numToWin;
@@ -43,22 +22,6 @@ public class Board {
     public void setBoard(int player, int x, int y) {
         if (board[x][y] == 0) {
             board[x][y] = player;
-            // update the player space
-            if (player == 1) {
-                // update top left corner
-                p1Space[0][0] = Math.min(p1Space[0][0], x);
-                p1Space[0][1] = Math.min(p1Space[0][1], y);
-                // update bottom right corner
-                p1Space[1][0] = Math.max(p1Space[1][0], x);
-                p1Space[1][1] = Math.max(p1Space[1][1], y);
-            } else if (player == -1) {
-                // update top left corner
-                p2Space[0][0] = Math.min(p2Space[0][0], x);
-                p2Space[0][1] = Math.min(p2Space[0][1], y);
-                // update bottom right corner
-                p2Space[1][0] = Math.max(p2Space[1][0], x);
-                p2Space[1][1] = Math.max(p2Space[1][1], y);
-            }
         } else {
             System.out.println("place chess failure");
         }
