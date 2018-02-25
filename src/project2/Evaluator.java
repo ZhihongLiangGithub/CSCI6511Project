@@ -6,7 +6,7 @@ public class Evaluator {
     private int player; // 1 if play first, otherwise -1
 
     private static final double GAMMA = 1.2; // weight on enemy's chess, increase this value the ai will tend to block enemy
-    private static final double CC = 1.0;
+    private static final double CC = 1.0; // coefficient of continuous chess, when CC->0 continuous chess will not matter
     public static final int SCORE_WHEN_WIN = 999999;
 
     public Evaluator(int numToWin, int player) {
@@ -363,7 +363,7 @@ public class Evaluator {
         return score;
     }
 
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
         Evaluator e1 = new Evaluator(5, 1);
         int[][] b = new int[15][15];
         b[6][5] = 1;
@@ -375,8 +375,7 @@ public class Evaluator {
         b[7][7] = 1;
         System.out.println(e1.evaluateWholeBoard(b));
         System.out.println(e1.evaluateBoard(b, prevScore, 1, 7, 7));
-
-    }
+    }*/
 
 
 }
