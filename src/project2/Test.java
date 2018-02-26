@@ -6,10 +6,12 @@ public class Test {
     private int numToWin;
 
     public static void main(String[] args) {
+        // test (18, 8) (15, 7) (12, 6)
         int n = 15;
         int m = 5;
         Test t = new Test(n, m);
-        t.playGameAiVsAi(4, 16,8,8);
+        //t.playGameAiVsAi(4, 16, 4, 16);
+        t.playGameAiVsHuman(8, 8, true);
     }
 
     public Test(int boardSize, int numToWin) {
@@ -19,7 +21,7 @@ public class Test {
 
     public void playGameAiVsHuman(int aiMaxSearchDepth, int aiMaxSearchSpace, boolean humanPlayFirst) {
         AIPlayer ai = new AIPlayer(!humanPlayFirst, numToWin, aiMaxSearchDepth, aiMaxSearchSpace);
-        HumanPlayer human = new HumanPlayer();
+        HumanPlayer human = new HumanPlayer(humanPlayFirst);
         Board b = new Board(boardSize, numToWin);
         int gameState = 0;
         boolean turn = humanPlayFirst;
