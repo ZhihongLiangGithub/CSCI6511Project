@@ -5,7 +5,7 @@ public class Evaluator {
     private int numToWin; // the number of continuous chess to win the game
     private int player; // 1 if play first, otherwise -1
 
-    private static final double GAMMA = 1.2; // weight on enemy's chess, increase this value the ai will tend to block enemy
+    private static final double GAMMA = 1.5; // weight on enemy's chess, increase this value the ai will tend to block enemy
     private static final double CC = 1.0; // coefficient of continuous chess, when CC->0 continuous chess will not matter
     public static final int SCORE_WHEN_WIN = 999999;
 
