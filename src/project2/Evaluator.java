@@ -89,7 +89,6 @@ public class Evaluator {
                 if (board[x][y + i + k] == 0) {
                     countMax = Math.max(countMax, count);
                     count = 0;
-                    continue;
                 } else if (sum * board[x][y + i + k] >= 0) {
                     sum += board[x][y + i + k];
                     count++;
@@ -118,7 +117,6 @@ public class Evaluator {
                 if (board[x + i + k][y] == 0) {
                     countMax = Math.max(countMax, count);
                     count = 0;
-                    continue;
                 } else if (sum * board[x + i + k][y] >= 0) {
                     sum += board[x + i + k][y];
                     count++;
@@ -147,7 +145,6 @@ public class Evaluator {
                 if (board[x + i + k][y + i + k] == 0) {
                     countMax = Math.max(countMax, count);
                     count = 0;
-                    continue;
                 } else if (sum * board[x + i + k][y + i + k] >= 0) {
                     sum += board[x + i + k][y + i + k];
                     count++;
@@ -176,7 +173,6 @@ public class Evaluator {
                 if (board[x - i - k][y + i + k] == 0) {
                     countMax = Math.max(countMax, count);
                     count = 0;
-                    continue;
                 } else if (sum * board[x - i - k][y + i + k] >= 0) {
                     sum += board[x - i - k][y + i + k];
                     count++;
@@ -204,7 +200,7 @@ public class Evaluator {
     }
 
     /**
-     * evaluate the board and return the score of possible places from high to low
+     * evaluate the board and return the score of possible places sorted
      *
      * @param board
      * @param currScore
@@ -250,7 +246,6 @@ public class Evaluator {
                     if (board[i][j + k] == 0) {
                         countMax = Math.max(countMax, count);
                         count = 0;
-                        continue;
                     } else if (sum * board[i][j + k] >= 0) {
                         sum += board[i][j + k];
                         count++;
@@ -281,7 +276,6 @@ public class Evaluator {
                     if (board[i + k][j] == 0) {
                         countMax = Math.max(countMax, count);
                         count = 0;
-                        continue;
                     } else if (sum * board[i + k][j] >= 0) {
                         sum += board[i + k][j];
                         count++;
@@ -317,7 +311,6 @@ public class Evaluator {
                     if (board[i - k][j + k] == 0) {
                         countMax = Math.max(countMax, count);
                         count = 0;
-                        continue;
                     } else if (sum * board[i - k][j + k] >= 0) {
                         sum += board[i - k][j + k];
                         count++;
@@ -360,7 +353,6 @@ public class Evaluator {
                     if (board[i + k][j + k] == 0) {
                         countMax = Math.max(countMax, count);
                         count = 0;
-                        continue;
                     } else if (sum * board[i + k][j + k] >= 0) {
                         sum += board[i + k][j + k];
                         count++;

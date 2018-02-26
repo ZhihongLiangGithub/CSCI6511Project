@@ -2,22 +2,22 @@ package project2;
 
 public class PointScore {
 
-    private int i;
-    private int j;
+    private int row;
+    private int column;
     private double score;
 
-    public PointScore(int i, int j, double score) {
-        this.i = i;
-        this.j = j;
+    public PointScore(int row, int column, double score) {
+        this.row = row;
+        this.column = column;
         this.score = score;
     }
 
-    public int getI() {
-        return i;
+    public int getRow() {
+        return row;
     }
 
-    public int getJ() {
-        return j;
+    public int getColumn() {
+        return column;
     }
 
     public double getScore() {

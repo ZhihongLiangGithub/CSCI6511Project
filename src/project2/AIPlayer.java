@@ -6,7 +6,6 @@ public class AIPlayer {
 
     private int player;
     private int[][] board;
-    private int numToWin;
     private int maxSearchDepth;
     private int maxSearchSpace;
     private int round; // a simple counter for the round of the game
@@ -15,7 +14,6 @@ public class AIPlayer {
 
     public AIPlayer(boolean playFirst, int numToWin, int maxSearchDepth, int maxSearchSpace) {
         this.player = playFirst ? 1 : -1;
-        this.numToWin = numToWin;
         this.maxSearchDepth = maxSearchDepth;
         this.maxSearchSpace = maxSearchSpace;
         this.round = 0;
@@ -32,8 +30,8 @@ public class AIPlayer {
         double bestVal = Integer.MIN_VALUE;
         int searchSpace = Math.min(maxSearchSpace, pointScoreList.size());
         for (int k = 0; k < searchSpace; k++) {
-            int i = pointScoreList.get(k).getI();
-            int j = pointScoreList.get(k).getJ();
+            int i = pointScoreList.get(k).getRow();
+            int j = pointScoreList.get(k).getColumn();
             double score = pointScoreList.get(k).getScore();
             board[i][j] = player;
             double moveVal = minimax(board, score, 0, Integer.MIN_VALUE, Integer.MAX_VALUE, false);
@@ -70,8 +68,8 @@ public class AIPlayer {
             if (searchSpace == 0) return 0;
             double best = Integer.MIN_VALUE;
             for (int k = 0; k < searchSpace; k++) {
-                int i = pointScoreList.get(k).getI();
-                int j = pointScoreList.get(k).getJ();
+                int i = pointScoreList.get(k).getRow();
+                int j = pointScoreList.get(k).getColumn();
                 double s = pointScoreList.get(k).getScore();
                 board[i][j] = player;
                 best = Math.max(best, minimax(board, s, depth + 1, alpha, beta, !isMax));
@@ -88,8 +86,8 @@ public class AIPlayer {
             if (searchSpace == 0) return 0;
             double best = Integer.MAX_VALUE;
             for (int k = 0; k < searchSpace; k++) {
-                int i = pointScoreList.get(k).getI();
-                int j = pointScoreList.get(k).getJ();
+                int i = pointScoreList.get(k).getRow();
+                int j = pointScoreList.get(k).getColumn();
                 double s = pointScoreList.get(k).getScore();
                 board[i][j] = -player;
                 best = Math.min(best, minimax(board, s, depth + 1, alpha, beta, !isMax));
