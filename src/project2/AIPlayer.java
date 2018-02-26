@@ -26,7 +26,7 @@ public class AIPlayer {
         board = b.getBoard();
         round++;
         double currScore = eva.evaluateWholeBoard(board);
-        List<PointScore> pointScoreList = getValuablePlaces(board, currScore, player);
+        List<PointScore> pointScoreList = eva.getValuablePlaces(board, currScore, player);
         int bestRow = -1;
         int bestCol = -1;
         double bestVal = Integer.MIN_VALUE;
@@ -51,33 +51,7 @@ public class AIPlayer {
         System.out.println();
     }
 
-    /**
-     * evaluate the board and return the score of possible places from high to low
-     *
-     * @param board
-     * @param currScore
-     * @param chess
-     * @return
-     */
-    private List<PointScore> getValuablePlaces(int[][] board, double currScore, int chess) {
-        List<PointScore> pointScoreList = new ArrayList<>();
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[0].length; j++) {
-                if (board[i][j] == 0) {
-                    board[i][j] = chess;
-                    double score = eva.evaluateBoard(board, currScore, chess, i, j);
-                    pointScoreList.add(new PointScore(i, j, score));
-                    board[i][j] = 0;
-                }
-            }
-        }
-        if (chess * player > 0) {
-            Collections.sort(pointScoreList, Comparator.comparingDouble(PointScore::getScore).reversed());
-        } else if (chess * player < 0) {
-            Collections.sort(pointScoreList, Comparator.comparingDouble(PointScore::getScore));
-        }
-        return pointScoreList;
-    }
+
 
     private double minimax(int[][] board, double score, int depth, double alpha, double beta, boolean isMax) {
         if (score == Evaluator.SCORE_WHEN_WIN) {
@@ -91,7 +65,7 @@ public class AIPlayer {
             return score + (random.nextDouble() - 0.5) * 0.01;
         }
         if (isMax) {
-            List<PointScore> pointScoreList = getValuablePlaces(board, score, player);
+            List<PointScore> pointScoreList = eva.getValuablePlaces(board, score, player);
             int searchSpace = Math.min(maxSearchSpace, pointScoreList.size());
             if (searchSpace == 0) return 0;
             double best = Integer.MIN_VALUE;
@@ -109,7 +83,7 @@ public class AIPlayer {
             }
             return best;
         } else {
-            List<PointScore> pointScoreList = getValuablePlaces(board, score, -player);
+            List<PointScore> pointScoreList = eva.getValuablePlaces(board, score, -player);
             int searchSpace = Math.min(maxSearchSpace, pointScoreList.size());
             if (searchSpace == 0) return 0;
             double best = Integer.MAX_VALUE;

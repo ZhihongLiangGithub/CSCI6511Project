@@ -1,5 +1,10 @@
 package project2;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 public class Evaluator {
 
     private int numToWin; // the number of continuous chess to win the game
@@ -196,6 +201,34 @@ public class Evaluator {
             score += i * (myFeature[i] - GAMMA * enemyFeature[i]);
         }
         return score;
+    }
+
+    /**
+     * evaluate the board and return the score of possible places from high to low
+     *
+     * @param board
+     * @param currScore
+     * @param chess
+     * @return
+     */
+    public List<PointScore> getValuablePlaces(int[][] board, double currScore, int chess) {
+        List<PointScore> pointScoreList = new ArrayList<>();
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                if (board[i][j] == 0) {
+                    board[i][j] = chess;
+                    double score = this.evaluateBoard(board, currScore, chess, i, j);
+                    pointScoreList.add(new PointScore(i, j, score));
+                    board[i][j] = 0;
+                }
+            }
+        }
+        if (chess * player > 0) {
+            Collections.sort(pointScoreList, Comparator.comparingDouble(PointScore::getScore).reversed());
+        } else if (chess * player < 0) {
+            Collections.sort(pointScoreList, Comparator.comparingDouble(PointScore::getScore));
+        }
+        return pointScoreList;
     }
 
     /**
