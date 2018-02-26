@@ -11,7 +11,7 @@ public class Test {
         int m = 5;
         Test t = new Test(n, m);
         //t.playGameAiVsAi(4, 16, 4, 16);
-        t.playGameAiVsHuman(8, 8, true);
+        t.playGameAiVsHuman(4, 16, true);
     }
 
     public Test(int boardSize, int numToWin) {

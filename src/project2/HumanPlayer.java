@@ -14,12 +14,14 @@ public class HumanPlayer {
     public void play(Board b) {
         board = b.getBoard();
         b.printBoard();
+        String symbol = player > 0 ? "x" : "o";
+        System.out.println("Your turn: " + symbol);
         Scanner in = new Scanner(System.in);
         boolean verified = false;
         while (!verified) {
-            System.out.println("select your row: ");
+            System.out.print("enter your row: ");
             int i = in.nextInt();
-            System.out.println("select you column: ");
+            System.out.print("enter you column: ");
             int j = in.nextInt();
             if (board[i][j] == 0) {
                 verified = true;
