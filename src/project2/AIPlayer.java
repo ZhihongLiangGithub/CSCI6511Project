@@ -8,16 +8,16 @@ public class AIPlayer {
     private int[][] board;
     private int numToWin;
     private int maxSearchDepth;
+    private int maxSearchSpace;
     private int round; // a simple counter for the round of the game
     private Evaluator eva;
 
-    private static final int MAX_SEARCH_SPACE = 16;
 
-
-    public AIPlayer(boolean playFirst, int numToWin, int maxSearchDepth) {
+    public AIPlayer(boolean playFirst, int numToWin, int maxSearchDepth, int maxSearchSpace) {
         this.player = playFirst ? 1 : -1;
         this.numToWin = numToWin;
         this.maxSearchDepth = maxSearchDepth;
+        this.maxSearchSpace = maxSearchSpace;
         this.round = 0;
         this.eva = new Evaluator(numToWin, player);
     }
@@ -30,7 +30,7 @@ public class AIPlayer {
         int bestRow = -1;
         int bestCol = -1;
         double bestVal = Integer.MIN_VALUE;
-        int searchSpace = Math.min(MAX_SEARCH_SPACE, pointScoreList.size());
+        int searchSpace = Math.min(maxSearchSpace, pointScoreList.size());
         for (int k = 0; k < searchSpace; k++) {
             int i = pointScoreList.get(k).getI();
             int j = pointScoreList.get(k).getJ();
@@ -92,7 +92,7 @@ public class AIPlayer {
         }
         if (isMax) {
             List<PointScore> pointScoreList = getValuablePlaces(board, score, player);
-            int searchSpace = Math.min(MAX_SEARCH_SPACE, pointScoreList.size());
+            int searchSpace = Math.min(maxSearchSpace, pointScoreList.size());
             if (searchSpace == 0) return 0;
             double best = Integer.MIN_VALUE;
             for (int k = 0; k < searchSpace; k++) {
@@ -110,7 +110,7 @@ public class AIPlayer {
             return best;
         } else {
             List<PointScore> pointScoreList = getValuablePlaces(board, score, -player);
-            int searchSpace = Math.min(MAX_SEARCH_SPACE, pointScoreList.size());
+            int searchSpace = Math.min(maxSearchSpace, pointScoreList.size());
             if (searchSpace == 0) return 0;
             double best = Integer.MAX_VALUE;
             for (int k = 0; k < searchSpace; k++) {

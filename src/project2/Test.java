@@ -9,7 +9,7 @@ public class Test {
         int n = 15;
         int m = 5;
         Test t = new Test(n, m);
-        t.playGameAiVsAi(4, 4);
+        t.playGameAiVsAi(4, 16,8,8);
     }
 
     public Test(int boardSize, int numToWin) {
@@ -17,8 +17,8 @@ public class Test {
         this.numToWin = numToWin;
     }
 
-    public void playGameAiVsHuman(int aiMaxSearchDepth, boolean humanPlayFirst) {
-        AIPlayer ai = new AIPlayer(!humanPlayFirst, numToWin, aiMaxSearchDepth);
+    public void playGameAiVsHuman(int aiMaxSearchDepth, int aiMaxSearchSpace, boolean humanPlayFirst) {
+        AIPlayer ai = new AIPlayer(!humanPlayFirst, numToWin, aiMaxSearchDepth, aiMaxSearchSpace);
         HumanPlayer human = new HumanPlayer();
         Board b = new Board(boardSize, numToWin);
         int gameState = 0;
@@ -49,9 +49,9 @@ public class Test {
         }
     }
 
-    public void playGameAiVsAi(int p1MaxSearchDepth, int p2MaxSearchDepth) {
-        AIPlayer p1 = new AIPlayer(true, numToWin, p1MaxSearchDepth);
-        AIPlayer p2 = new AIPlayer(false, numToWin, p1MaxSearchDepth);
+    public void playGameAiVsAi(int p1MaxSearchDepth, int p1MaxSearchSpace, int p2MaxSearchDepth, int p2MaxSearchSpace) {
+        AIPlayer p1 = new AIPlayer(true, numToWin, p1MaxSearchDepth, p1MaxSearchSpace);
+        AIPlayer p2 = new AIPlayer(false, numToWin, p2MaxSearchDepth, p2MaxSearchSpace);
         Board b = new Board(boardSize, numToWin);
         int gameState = 0;
         boolean turn = true;
