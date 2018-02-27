@@ -30,15 +30,23 @@ public class Evaluator {
      * @return
      */
     public double evaluateBoard(int[][] board, double prevScore, int chess, int x, int y) {
-        int w = 0; // the stretch length on west side of (x, y)
-        int e = 0; // the stretch length on east side of (x, y)
-        int n = 0; // the stretch length on north side of (x, y)
-        int s = 0; // the stretch length on south side of (x, y)
-        int nw = 0; // the stretch length on northwest side of (x, y)
-        int se = 0; // the stretch length on southeast side of (x, y)
-        int sw = 0; // the stretch length on southwest side of (x, y)
-        int ne = 0; // the stretch length on northeast side of (x, y)
-        while (w < numToWin - 1 && y - w > 0) {
+        // the stretch length on west side of (x, y)
+        int w = y - numToWin + 1 < 0 ? y : numToWin - 1;
+        // the stretch length on east side of (x, y)
+        int e = y + numToWin - 1 < board[0].length - 1 ? numToWin - 1 : board[0].length - 1 - y;
+        // the stretch length on north side of (x, y)
+        int n = x - numToWin + 1 < 0 ? x : numToWin - 1;
+        // the stretch length on south side of (x, y)
+        int s = x + numToWin - 1 < board.length - 1 ? numToWin - 1 : board.length - 1 - x;
+        // the stretch length on northwest side of (x, y)
+        int nw = Math.min(n, w);
+        // the stretch length on southeast side of (x, y)
+        int se = Math.min(s, e);
+        // the stretch length on southwest side of (x, y)
+        int sw = Math.min(s, w);
+        // the stretch length on northeast side of (x, y)
+        int ne = Math.min(n, e);
+        /*while (w < numToWin - 1 && y - w > 0) {
             w++;
         }
         while (e < numToWin - 1 && y + e < board[0].length - 1) {
@@ -61,7 +69,7 @@ public class Evaluator {
         }
         while (ne < numToWin - 1 && y + ne < board[0].length - 1 && x - ne > 0) {
             ne++;
-        }
+        }*/
         // evaluate the nearby partial score of (x, y) from different directions if not place chess
         board[x][y] = 0;
         double scoreNotPlace = partialEvaluate(board, x, y, w, e, n, s, nw, se, sw, ne);
@@ -103,9 +111,9 @@ public class Evaluator {
                 return player * Integer.signum(sum) * SCORE_WHEN_WIN;
             }
             if (sum * player > 0) {
-                myFeature[sum * player]+= Math.pow(numToWin / (numToWin - CC * countMax), 2);
+                myFeature[sum * player] += Math.pow(numToWin / (numToWin - CC * countMax), 2);
             } else if (sum * player < 0) {
-                enemyFeature[-sum * player]+= Math.pow(numToWin / (numToWin - CC * countMax), 2);
+                enemyFeature[-sum * player] += Math.pow(numToWin / (numToWin - CC * countMax), 2);
             }
         }
         // evaluate from north point to south point
@@ -131,9 +139,9 @@ public class Evaluator {
                 return player * Integer.signum(sum) * SCORE_WHEN_WIN;
             }
             if (sum * player > 0) {
-                myFeature[sum * player]+= Math.pow(numToWin / (numToWin - CC * countMax), 2);
+                myFeature[sum * player] += Math.pow(numToWin / (numToWin - CC * countMax), 2);
             } else if (sum * player < 0) {
-                enemyFeature[-sum * player]+= Math.pow(numToWin / (numToWin - CC * countMax), 2);
+                enemyFeature[-sum * player] += Math.pow(numToWin / (numToWin - CC * countMax), 2);
             }
         }
         // evaluate from northwest point to southeast point
@@ -159,9 +167,9 @@ public class Evaluator {
                 return player * Integer.signum(sum) * SCORE_WHEN_WIN;
             }
             if (sum * player > 0) {
-                myFeature[sum * player]+= Math.pow(numToWin / (numToWin - CC * countMax), 2);
+                myFeature[sum * player] += Math.pow(numToWin / (numToWin - CC * countMax), 2);
             } else if (sum * player < 0) {
-                enemyFeature[-sum * player]+= Math.pow(numToWin / (numToWin - CC * countMax), 2);
+                enemyFeature[-sum * player] += Math.pow(numToWin / (numToWin - CC * countMax), 2);
             }
         }
         // evaluate from southwest point to northeast point
@@ -187,9 +195,9 @@ public class Evaluator {
                 return player * Integer.signum(sum) * SCORE_WHEN_WIN;
             }
             if (sum * player > 0) {
-                myFeature[sum * player]+= Math.pow(numToWin / (numToWin - CC * countMax), 2);
+                myFeature[sum * player] += Math.pow(numToWin / (numToWin - CC * countMax), 2);
             } else if (sum * player < 0) {
-                enemyFeature[-sum * player]+= Math.pow(numToWin / (numToWin - CC * countMax), 2);
+                enemyFeature[-sum * player] += Math.pow(numToWin / (numToWin - CC * countMax), 2);
             }
         }
         double score = 0;
@@ -260,9 +268,9 @@ public class Evaluator {
                     return player * Integer.signum(sum) * SCORE_WHEN_WIN;
                 }
                 if (sum * player > 0) {
-                    myFeature[sum * player]+= Math.pow(numToWin / (numToWin - CC * countMax), 2);
+                    myFeature[sum * player] += Math.pow(numToWin / (numToWin - CC * countMax), 2);
                 } else if (sum * player < 0) {
-                    enemyFeature[-sum * player]+= Math.pow(numToWin / (numToWin - CC * countMax), 2);
+                    enemyFeature[-sum * player] += Math.pow(numToWin / (numToWin - CC * countMax), 2);
                 }
             }
         }
@@ -290,9 +298,9 @@ public class Evaluator {
                     return player * Integer.signum(sum) * SCORE_WHEN_WIN;
                 }
                 if (sum * player > 0) {
-                    myFeature[sum * player]+= Math.pow(numToWin / (numToWin - CC * countMax), 2);
+                    myFeature[sum * player] += Math.pow(numToWin / (numToWin - CC * countMax), 2);
                 } else if (sum * player < 0) {
-                    enemyFeature[-sum * player]+= Math.pow(numToWin / (numToWin - CC * countMax), 2);
+                    enemyFeature[-sum * player] += Math.pow(numToWin / (numToWin - CC * countMax), 2);
                 }
             }
         }
@@ -326,9 +334,9 @@ public class Evaluator {
                     return player * Integer.signum(sum) * SCORE_WHEN_WIN;
                 }
                 if (sum * player > 0) {
-                    myFeature[sum * player]+= Math.pow(numToWin / (numToWin - CC * countMax), 2);
+                    myFeature[sum * player] += Math.pow(numToWin / (numToWin - CC * countMax), 2);
                 } else if (sum * player < 0) {
-                    enemyFeature[-sum * player]+= Math.pow(numToWin / (numToWin - CC * countMax), 2);
+                    enemyFeature[-sum * player] += Math.pow(numToWin / (numToWin - CC * countMax), 2);
                 }
                 i--;
                 j++;
@@ -368,9 +376,9 @@ public class Evaluator {
                     return player * Integer.signum(sum) * SCORE_WHEN_WIN;
                 }
                 if (sum * player > 0) {
-                    myFeature[sum * player]+= Math.pow(numToWin / (numToWin - CC * countMax), 2);
+                    myFeature[sum * player] += Math.pow(numToWin / (numToWin - CC * countMax), 2);
                 } else if (sum * player < 0) {
-                    enemyFeature[-sum * player]+= Math.pow(numToWin / (numToWin - CC * countMax), 2);
+                    enemyFeature[-sum * player] += Math.pow(numToWin / (numToWin - CC * countMax), 2);
                 }
                 i++;
                 j++;
@@ -392,14 +400,11 @@ public class Evaluator {
         Evaluator e1 = new Evaluator(5, 1);
         int[][] b = new int[15][15];
         b[6][5] = 1;
-        b[5][5] = -1;
-        b[5][6] = 1;
-        b[6][6] = -1;
         double prevScore = e1.evaluateWholeBoard(b);
         System.out.println(prevScore);
-        b[7][7] = 1;
+        b[12][3] = -1;
         System.out.println(e1.evaluateWholeBoard(b));
-        System.out.println(e1.evaluateBoard(b, prevScore, 1, 7, 7));
+        System.out.println(e1.evaluateBoard(b, prevScore, -1, 12, 3));
     }*/
 
 
