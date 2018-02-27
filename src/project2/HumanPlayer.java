@@ -16,9 +16,9 @@ public class HumanPlayer {
         b.printBoard();
         String symbol = player > 0 ? "x" : "o";
         System.out.println("Your turn: " + symbol);
-        Scanner in = new Scanner(System.in);
         boolean verified = false;
         while (!verified) {
+            Scanner in = new Scanner(System.in);
             System.out.print("enter your row: ");
             int i = in.nextInt();
             System.out.print("enter you column: ");
