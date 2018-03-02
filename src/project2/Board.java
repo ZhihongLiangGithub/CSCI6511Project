@@ -39,7 +39,7 @@ public class Board {
     }
 
     /**
-     * 
+     *
      * @param player 1 - player play first, -1 - player play second
      * @param row
      * @param col
