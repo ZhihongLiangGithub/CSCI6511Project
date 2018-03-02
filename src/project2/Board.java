@@ -4,10 +4,15 @@ public class Board {
 
     private int[][] board;
     private int numToWin;
+    private int[] p1LastChess;
+    private int[] p2LastChess;
+
 
     public Board(int size, int numToWin) {
         this.board = new int[size][size];
         this.numToWin = numToWin;
+        this.p1LastChess = new int[2];
+        this.p2LastChess = new int[2];
     }
 
     public int[][] getBoard() {
@@ -19,9 +24,36 @@ public class Board {
         return numToWin;
     }
 
-    public void setBoard(int player, int x, int y) {
-        if (board[x][y] == 0) {
-            board[x][y] = player;
+    /**
+     *
+     * @param player 1 - player play first, -1 - player play second
+     * @return
+     */
+    public int[] getPlayerLastChess(int player) {
+        if (player == 1) {
+            return p1LastChess.clone();
+        } else if (player == -1) {
+            return p2LastChess.clone();
+        }
+        return null;
+    }
+
+    /**
+     * 
+     * @param player 1 - player play first, -1 - player play second
+     * @param row
+     * @param col
+     */
+    public void setBoard(int player, int row, int col) {
+        if (board[row][col] == 0) {
+            if (player == 1) {
+                p1LastChess[0] = row;
+                p1LastChess[1] = col;
+            } else if (player == -1) {
+                p2LastChess[0] = row;
+                p2LastChess[1] = col;
+            }
+            board[row][col] = player;
         } else {
             System.out.println("place chess failure");
         }
