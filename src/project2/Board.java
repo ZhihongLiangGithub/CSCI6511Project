@@ -4,15 +4,15 @@ public class Board {
 
     private int[][] board;
     private int numToWin;
-    private int[] p1LastChess;
-    private int[] p2LastChess;
+    private int[] p1LastMove;
+    private int[] p2LastMove;
 
 
     public Board(int size, int numToWin) {
         this.board = new int[size][size];
         this.numToWin = numToWin;
-        this.p1LastChess = new int[2];
-        this.p2LastChess = new int[2];
+        this.p1LastMove = new int[2];
+        this.p2LastMove = new int[2];
     }
 
     public int[][] getBoard() {
@@ -29,11 +29,11 @@ public class Board {
      * @param player 1 - player play first, -1 - player play second
      * @return
      */
-    public int[] getPlayerLastChess(int player) {
+    public int[] getPlayerLastMove(int player) {
         if (player == 1) {
-            return p1LastChess.clone();
+            return p1LastMove.clone();
         } else if (player == -1) {
-            return p2LastChess.clone();
+            return p2LastMove.clone();
         }
         return null;
     }
@@ -47,11 +47,11 @@ public class Board {
     public void setBoard(int player, int row, int col) {
         if (board[row][col] == 0) {
             if (player == 1) {
-                p1LastChess[0] = row;
-                p1LastChess[1] = col;
+                p1LastMove[0] = row;
+                p1LastMove[1] = col;
             } else if (player == -1) {
-                p2LastChess[0] = row;
-                p2LastChess[1] = col;
+                p2LastMove[0] = row;
+                p2LastMove[1] = col;
             }
             board[row][col] = player;
         } else {
