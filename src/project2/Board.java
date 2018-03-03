@@ -11,8 +11,8 @@ public class Board {
     public Board(int size, int numToWin) {
         this.board = new int[size][size];
         this.numToWin = numToWin;
-        this.p1LastMove = new int[2];
-        this.p2LastMove = new int[2];
+        this.p1LastMove = new int[]{-1, -1};
+        this.p2LastMove = new int[]{-1, -1};
     }
 
     public int[][] getBoard() {
@@ -25,7 +25,6 @@ public class Board {
     }
 
     /**
-     *
      * @param player 1 - player play first, -1 - player play second
      * @return
      */
@@ -39,8 +38,8 @@ public class Board {
     }
 
     /**
-     *
-     * @param player 1 - player play first, -1 - player play second
+     * @param player 1 - player play first, -1 - player play
+     *               second
      * @param row
      * @param col
      */
