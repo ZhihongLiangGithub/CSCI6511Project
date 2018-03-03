@@ -1,4 +1,4 @@
-# CSCI6511Project
+# GWU CSCI6511 Artificial Intelligence Term Project
 
 ## Project 1 
 
@@ -22,7 +22,7 @@ using minimax algorithm with alpha-beta prunning
 
 ### Evaluation function 
 
-I use a evaluation method of counting winning windows, which definition can be found in [this article](https://web.stanford.edu/class/cs221/2017/restricted/p-final/xiaotihu/final.pdf). In addition, I make some improvements. I count the max value of continuous chess in a window and regard it as a bonus to the score of the window. This bonus coeffience will encourage the ai to form continuous chess or block enemy's continuous chess in the process of the game.
+I use a evaluation method of counting winning windows, which definition can be found in [this article](https://web.stanford.edu/class/cs221/2017/restricted/p-final/xiaotihu/final.pdf). In addition, I make some improvements. I count the max value of continuous chess in a window and regard it as a bonus to the score of the window. This bonus coeffience will encourage the AI to form continuous chess or block enemy's continuous chess in the process of the game.
 
 ### Optimizations 
 
