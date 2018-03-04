@@ -8,7 +8,7 @@ Read maze from a txt file and tell whether it has a path given a start point and
 
 ### (2) Tic Tac Toe game
 
-A simple tic tac toe agent. 
+A simple reflect agent. 
 
 ## Project 2: generalized Tic Tac Toe game 
 
