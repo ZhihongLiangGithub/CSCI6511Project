@@ -4,7 +4,11 @@
 
 ### (1) solve maze 
 
+Read maze from a txt file and tell whether it has a path given a start point and an end point, using backtracking algorithm. This is an example of uninformed search.
+
 ### (2) Tic Tac Toe game
+
+A simple tic tac toe agent. 
 
 ## Project 2: generalized Tic Tac Toe game 
 
@@ -26,5 +30,5 @@ I use a evaluation method of counting winning windows, which definition can be f
 
 ### Optimizations 
 
-According to the definition of winning window, a chess placed on the board can only effect the score of windows that containing the chess. Therefore, I pass the board score down with the recursion and update the board score according to the partial difference, 
+According to the definition of winning window, a chess placed on the board can only effect the score of the windows that containing the chess. Therefore, I pass the board score down with the recursion and update the board score according to the partial difference, 
 this avoid unnecessary evaluation and save computation time. Furthermore, I limit the search space, the space can be set for different player. The search space is selected from the most valuable places from the board. When setting the depth to 4 and the search space to 16, the AI can return the result in 1 second in a 15 * 15, 5 in a row game.
