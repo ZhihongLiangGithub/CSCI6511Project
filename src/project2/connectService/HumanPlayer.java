@@ -1,4 +1,4 @@
-package project2;
+package project2.connectService;
 
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
