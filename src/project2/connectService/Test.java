@@ -1,4 +1,4 @@
-package project2;
+package project2.connectService;
 
 public class Test {
 
