@@ -1,4 +1,4 @@
-package project2RESTful;
+package project2;
 
 public class Test {
 
