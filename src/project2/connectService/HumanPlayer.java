@@ -1,4 +1,4 @@
-package project2RESTful;
+package project2;
 
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
