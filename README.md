@@ -26,9 +26,13 @@ using minimax algorithm with alpha-beta prunning
 
 ### Evaluation function 
 
-I use a evaluation method of counting winning windows, which definition can be found in [this article](https://web.stanford.edu/class/cs221/2017/restricted/p-final/xiaotihu/final.pdf). In addition, I make some improvements. I count the max value of continuous chess in a window and regard it as a bonus to the score of the window. This bonus coeffience will encourage the AI to form continuous chess or block enemy's continuous chess in the process of the game.
+We use a evaluation method of counting winning windows, which definition can be found in [this article](https://web.stanford.edu/class/cs221/2017/restricted/p-final/xiaotihu/final.pdf). In addition, we make some improvements. We count the max value of continuous chess in a window and regard it as a bonus to the score of the window. This bonus coeffience will encourage the AI to form continuous chess or block enemy's continuous chess in the process of the game.
 
 ### Optimizations 
 
-According to the definition of winning window, a chess placed on the board can only effect the score of the windows that contains the chess. Therefore, I pass the board score down with the recursion and update the board score according to the partial difference, 
-this avoid unnecessary evaluation and save computation time. Furthermore, I limit the search space, the space can be set for different player. The search space is selected from the most valuable places from the board. 
+According to the definition of winning window, a chess placed on the board can only effect the score of the windows that contains the chess. Therefore, we pass the board score down with the recursion and update the board score according to the partial difference, 
+this avoid unnecessary evaluation and save computation time. Furthermore, we limit the search space, the space can be set for different player. The search space is selected from the most valuable places from the board. 
+
+### Acknowledgement
+
+Special thanks to @ZjutMisLeo for integrating a REST API into this project and enable us to compete with other teams in the class. 
