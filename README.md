@@ -35,4 +35,4 @@ this avoid unnecessary evaluation and save computation time. Furthermore, we lim
 
 ### Acknowledgement
 
-Special thanks to @ZjutMisLeo for integrating a REST API into this project and enable us to compete with other teams in the class. 
+Special thanks to [@ZjutMisLeo](https://github.com/ZjutMisLeo) for integrating a REST API into this project and enable us to compete with other teams in the class. 
