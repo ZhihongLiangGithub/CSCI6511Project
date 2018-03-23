@@ -13,7 +13,7 @@ public class NPuzzle {
     int[][] grid;
 
     public NPuzzle() {
-        
+
     }
 
     public void solve() {
