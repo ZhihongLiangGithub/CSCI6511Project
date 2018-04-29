@@ -16,7 +16,11 @@ public class Board {
     }
 
     public int[][] getBoard() {
-        return board.clone();
+        int[][] b = new int[board.length][];
+        for (int i = 0; i < board.length; i++) {
+            b[i] = board[i].clone();
+        }
+        return b;
     }
 
 

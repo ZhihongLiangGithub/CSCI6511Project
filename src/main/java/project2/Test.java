@@ -10,8 +10,8 @@ public class Test {
         int n = 15;
         int m = 5;
         Test t = new Test(n, m);
-        //t.playGameAiVsAi(4, 16, 4, 16);
-        t.playGameAiVsHuman(4, 16, false);
+        t.playGameAiVsAi(4, 16, 4, 16);
+        //t.playGameAiVsHuman(4, 16, false);
     }
 
     public Test(int boardSize, int numToWin) {
