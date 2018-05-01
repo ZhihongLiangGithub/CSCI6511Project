@@ -17,7 +17,8 @@ public class Dealer {
         this.transition = new double[][]{
                 {2.0 / 3, 1.0 / 6, 1.0 / 6},
                 {1.0 / 6, 2.0 / 3, 1.0 / 6},
-                {1.0 / 6, 1.0 / 6, 2.0 / 3}};
+                {1.0 / 6, 1.0 / 6, 2.0 / 3}
+        };
         // emission probability
         this.emission = new double[][]{
                 {0.6, 0.2, 0.2},
