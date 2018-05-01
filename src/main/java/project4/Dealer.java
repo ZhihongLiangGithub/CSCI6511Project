@@ -13,7 +13,7 @@ public class Dealer {
     public Dealer() {
         // initial probability
         this.initial = new double[]{1.0 / 3, 1.0 / 3, 1.0 / 3};
-        // transition probability, hidden states: D1, D2, D2
+        // transition probability, hidden states: D1, D2, D3
         this.transition = new double[][]{
                 {2.0 / 3, 1.0 / 6, 1.0 / 6},
                 {1.0 / 6, 2.0 / 3, 1.0 / 6},
